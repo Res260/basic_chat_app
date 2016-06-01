@@ -1,0 +1,30 @@
+﻿<Application x:Class="TP2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TP2"
+             xmlns:vm="clr-namespace:TP2.VueModeles"
+             xmlns:vues="clr-namespace:TP2.Vues"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Fait le lien entre vmConnexion et vueConnexion -->
+            <DataTemplate DataType="{x:Type vm:vmConnexion}">
+                <vues:vueConnexion />
+            </DataTemplate>
+            <!-- Fait le lien entre vmChat et vueChat -->
+            <DataTemplate DataType="{x:Type vm:vmChat}">
+                <vues:vueChat />
+            </DataTemplate>
+            <!-- Définit en template lorsque le Textbox contient une valeur invalide -->
+            <ControlTemplate x:Key="validationTemplate">
+                <StackPanel>
+                    <Border BorderBrush="Red" BorderThickness="2">
+                        <Grid Background="Transparent" ToolTip="{Binding Path=/ErrorContent}">
+                            <AdornedElementPlaceholder Margin="1" />
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
